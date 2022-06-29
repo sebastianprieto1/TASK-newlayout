@@ -28,7 +28,7 @@
     <h2 class="logo">T<span class=greentestlogo>ASK</span></h2>
     <span id="dateSpan"> </span>
         <div class="addTaskBtnMobile">
-            <button type="button">Add Task</button>
+            <button id="addTaskBtnMobile" type="button">Add Task</button>
         </div>  
  </header>   
 <div class="mobileDiv">
@@ -53,7 +53,8 @@
         <img src="./Resources/ProfileUesr3.png">
     </div>
     <div class="addTaskBtn">
-        <button type="button">Add Task</button>
+        <button id="myBtn" type="button">Add Task</button>
+        
     </div>
 </div>
 <main>
@@ -110,6 +111,57 @@
 
     </div>
     
+
+<!-- NEW TASK modal html -->
+<div class="modalOverlay">
+
+
+<form class="modal" id="form" action="" method="GET">
+    <span id="closebtn" class="close">&times;</span>
+    <h2>Add New Task</h2>
+<br>
+    <label for="name">Task Name:</label>
+      <input id="taskName" type="text" />
+
+      
+
+ 
+      <label for="assignTo">Assign To:</label>
+      <select id="assignedTo" name="assignTo">
+        <option value="">Select Team Member</option>
+        <option value="Betty">Betty</option>
+        <option value="Jonnevie">Jonnevie</option>
+        <option value="Seb">Seb</option>
+        <option value="Pooja">Pooja</option>
+      </select>
+      
+      
+      <label for="dueDate">Due Date:</label>
+      <input type="date" id="dueDate" name="dueDate" />
+      
+      <label for="status">Status</label>
+      <select id="setStatus" name="status">
+        <option value="">Select Status</option>
+        <option value="modalToDo">To Do</option>
+        <option value="modalInProgress">In Progress</option>
+        <option value="modalReview">Review</option>
+        <option value="modalDone">Done</option>
+      </select>
+   
+      <label for="description">Description:</label>
+
+      <textarea id="description" name="description" rows="10" cols="80">
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi repellendus ullam, quibusdam quasi natus suscipit odit. Architecto, mollitia voluptatem molestiae sapiente, ex iste ratione nemo rerum quasi, quia fugit assumenda!
+</textarea>  
+<button id="modalBtn" type="submit">Submit</button>
+    <div id="errorMsg"></div>
+    </div>
+
+  
+  </form>
+
+</div>
+
 </main>
 
 
