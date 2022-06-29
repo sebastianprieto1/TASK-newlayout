@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+
+<link href="https://fonts.googleapis.com/css2?family=Geo&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+     <!-- Bootstrap CSS -->
+     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+     <!-- Bootstrap JavaScript Bundle -->
+     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> -->
+     <!-- Font Awesome -->
+     <!-- <script src="https://kit.fontawesome.com/a4530500ac.js" crossorigin="anonymous"></script>    -->
+     <link rel="stylesheet" href="./styles.css">
+     
+    <title>TASK</title>
+</head>
+<body>
+
+ <header class="topBar">
+    <h2 class="logo">T<span class=greentestlogo>ASK</span></h2>
+    <span id="dateSpan"> </span>
+        <div class="addTaskBtnMobile">
+            <button type="button">Add Task</button>
+        </div>  
+ </header>   
+<div class="mobileDiv">
+    <span id="dateSpanMobile"> </span>
+</div>
+<div class="descriptionBar">
+   
+        <textarea id="projectDescription" name="projectDescription" rows="4" cols="180">
+            
+        </textarea>
+   
+    <div class="profilePhoto">
+        <img src="./Resources/ProfileUser1.png">
+    </div>
+</div>
+
+<div class="collabAndAddTaskBtnBar">
+    <div class="collab">
+        <span>Collaborators:</span>
+        <img src="./Resources/ProfileUser1.png">
+        <img src="./Resources/ProfileUser2.png">
+        <img src="./Resources/ProfileUesr3.png">
+    </div>
+    <div class="addTaskBtn">
+        <button type="button">Add Task</button>
+    </div>
+</div>
+<main>
+    <div class="cards">
+        <div id="cardsToDo">
+            <h2 class="Heading" id="toDoHeading">To Do</h2> 
+                <div class="card1">
+                    <span><img src="./Resources/redbox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div>
+        </div>
+
+
+        <div id="cardsinProgress">
+            <h2 class="Heading" id="inProgressHeading">In Progress</h2> 
+                <div class="card1">
+                    <span><img src="./Resources/yellowbox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div>
+        </div>
+
+        <div id="cardsReview">
+            <h2 class="Heading" id="reviewHeading">Review</h2> 
+                <div class="card1">
+                    <span><img src="./Resources/bluebox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div>
+        </div>
+
+
+        <div id="cardsDone">
+            <h2 class="Heading" id="doneHeading">Done</h2> 
+                <div class="card1">
+                    <span><img src="./Resources/greenbox.png" alt=""></span>
+                    <h3>Task Title Here</h3>
+                    <p class="taskDescriptionText">task description here. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, corrupti?</p>
+                    <img class= profileCard src="./Resources/ProfileUser1.png">
+                    <hr>
+                    <p class="dueDateText"><strong>DUE:</strong> <span>DD/MM/YYY</span></p>
+                </div>
+        </div>
+
+    </div>
+    
+</main>
+
+
+
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
+</script>
+<script src="./script.js"></script>
+</body>
+</html>
