@@ -34,23 +34,27 @@ var modal = document.getElementById("form");
 var btn = document.getElementById("myBtn");
 var span = document.getElementById("closebtn");
 
-
+let modalOverlay = document.getElementById('modalOverlay');
 let mobileAddTaskBtn = document.getElementById('addTaskBtnMobile');
 
 
 btn.onclick = function() {
   modal.style.display = "block";
-  document.body.style.backgroundColor = "rgba(0, 0, 0, .5)";
+  modalOverlay.style.opacity = "0.3";
+  modalOverlay.style.backgroundColor = "gray";
+  
 }
-
 
 span.onclick = function() {
   modal.style.display = "none";
-  document.body.style.backgroundColor = 'transparent';
+  modalOverlay.style.opacity = "1";
+  modalOverlay.style.backgroundColor = "transparent";
 }
 mobileAddTaskBtn.onclick = function() {
     modal.style.display = "block";
-    document.body.style.backgroundColor = "rgba(0, 0, 0, .5)"
+    modalOverlay.style.opacity = "0.3";
+  modalOverlay.style.backgroundColor = "gray";
+   
   };
 
 form.addEventListener('submit', (e) => {
@@ -60,23 +64,23 @@ form.addEventListener('submit', (e) => {
     }
 
     if (taskName.value.length < 8){
-        messages.push('Task Name must be longer than 8 characters!')
+        messages.push('Task Name must be longer than 8 characters')
     }
     if (assignedTo.value == "" ){
-        messages.push('Task must be assigned!')
+        messages.push('Task must be assigned')
     }
     if (setStatus.value == ""){
-        messages.push('Please set a status!')
+        messages.push('Please set a status.')
     }
     if (description.value == ""){
-        messages.push('Please write a description!')
+        messages.push('Please write a description')
     }
     if (description.value.length < 20){
-        messages.push('Please write a description of at least 20 characters!')
+        messages.push('Please write a description of at least 20 characters')
     }
     if (messages.length > 0){
         e.preventDefault()
-        errorElement.innerText = messages.join(',')
+        errorElement.innerText = messages.join('. ')
     }
     
 })
