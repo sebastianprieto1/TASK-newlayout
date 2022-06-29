@@ -33,9 +33,19 @@ let description = document.getElementById('description');
 var modal = document.getElementById("form");
 var btn = document.getElementById("myBtn");
 var span = document.getElementById("closebtn");
+let dueDate = document.getElementById('dueDate');
 
 let modalOverlay = document.getElementById('modalOverlay');
 let mobileAddTaskBtn = document.getElementById('addTaskBtnMobile');
+
+dueDate.addEventListener("click", function () {
+    let today = new Date();
+    let dateToday = String(today.getDate()).padStart(2, "0");
+    let monthToday = String(today.getMonth() + 1).padStart(2, "0");
+    let yearToday = today.getFullYear();
+    let minDate = `${yearToday}-${monthToday}-${dateToday}`;
+    dueDate.min = minDate;
+  });
 
 
 btn.onclick = function() {
@@ -71,6 +81,9 @@ form.addEventListener('submit', (e) => {
     }
     if (setStatus.value == ""){
         messages.push('Please set a status.')
+    }
+    if (dueDate.value === ""){
+        messages.push('Please set a due date!')
     }
     if (description.value == ""){
         messages.push('Please write a description')

@@ -273,6 +273,8 @@ cursor: pointer;
     #cardsDone {
         grid-area: Done;
     }
+
+    
 }
 /* Media queries phone */
 @media only screen and (min-width: 300px) and (max-width: 500px) {
@@ -333,6 +335,18 @@ cursor: pointer;
         font-weight: bold;
     }
 
- 
+    .modal {
+      display: none; 
+  position: absolute; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 50%;
+  top: 30%;
+  margin-left: -150px;
+  margin-top: -150px;
+  width: 300px;
+  height: max-content; 
+  background-color: white; 
+  padding: 20px;
+    }
     
 }
