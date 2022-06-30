@@ -51,17 +51,9 @@ let modalOverlay = document.getElementById('modalOverlay');
 let mobileAddTaskBtn = document.getElementById('addTaskBtnMobile');
 
 
-let newCard = document.getElementsByClassName('newCard');
+
 
 //Click events
-for (let i = 0; i < newCard.length; i++) {
-    newCard.item(i).addEventListener('click', function(){
-     formDelete.style.display = 'block'
-     modalOverlay.style.opacity = "0.3";
-     modalOverlay.style.backgroundColor = "gray";
-    });
- }
-
 
   for (let i = 0; i < card1.length; i++) {
     card1.item(i).addEventListener('click', function(){
@@ -140,6 +132,15 @@ dueDate.addEventListener("click", function () {
     dueDate.min = minDate;
   });
 
+  dueDate2.addEventListener("click", function () {
+    let today = new Date();
+    let dateToday = String(today.getDate()).padStart(2, "0");
+    let monthToday = String(today.getMonth() + 1).padStart(2, "0");
+    let yearToday = today.getFullYear();
+    let minDate = `${yearToday}-${monthToday}-${dateToday}`;
+    dueDate2.min = minDate;
+  });
+
  //Begin Javascript for adding todo
 
  //class constructor
@@ -165,7 +166,6 @@ let toDoItems = [];
  let reviewItems = [];
  let doneItems = [];
 let modalBtn = document.getElementById('modalBtn');
-
 let cardsToDo = document.getElementById('cardsToDo');
 let cardsinProgress = document.getElementById('cardsinProgress');
 let cardsReview = document.getElementById('cardsReview');
@@ -177,8 +177,10 @@ let cardsDone = document.getElementById('cardsDone');
 form.addEventListener('submit',
     function extractData(){
 
-    let ourNewTask = new NewTask (`${taskName.value}`,`${assignedTo.value}`,`${dueDate.value}`,
-        `${setStatus.value}`,`${description.value}`,`${description.value}`);
+
+        //Thanks Justin!
+    let ourNewTask = new NewTask (taskName.value,assignedTo.value,dueDate.value,
+        setStatus.value,description.value,description.value);
 
     if (setStatus.value === "modalToDo") {
         toDoItems.push(ourNewTask);
@@ -197,6 +199,15 @@ form.addEventListener('submit',
             newDiv.innerHTML = card;
         };
          addNewCardDivToDo();
+
+         modal.style.display = "none";
+         modalOverlay.style.opacity = "1";
+         modalOverlay.style.backgroundColor = "transparent";
+         form.value = "";
+
+
+
+
          
     } if (setStatus.value === "modalInProgress") {
         inProgressItems.push(ourNewTask);
