@@ -1,3 +1,11 @@
+window.addEventListener('load', () => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    })
+})
+
+
+
 // the Date Functionality
 
 let today = new Date();
@@ -22,8 +30,7 @@ dateSpan.innerHTML= `<strong>Date:</strong> ${today} |
 
 
 
-
-// To Do Modal JS
+//All the lets in the house
 let taskName = document.getElementById('taskName');
 let assignedTo = document.getElementById('assignedTo');
 let form = document.getElementById('form');
@@ -34,32 +41,51 @@ var modal = document.getElementById("form");
 var btn = document.getElementById("myBtn");
 var span = document.getElementById("closebtn");
 let dueDate = document.getElementById('dueDate');
+let formDelete = document.getElementById('formDelete');
+let closebtnedit = document.getElementById('closebtnedit');
+let card1 = document.getElementsByClassName("card1");
+
+
 
 let modalOverlay = document.getElementById('modalOverlay');
 let mobileAddTaskBtn = document.getElementById('addTaskBtnMobile');
 
-dueDate.addEventListener("click", function () {
-    let today = new Date();
-    let dateToday = String(today.getDate()).padStart(2, "0");
-    let monthToday = String(today.getMonth() + 1).padStart(2, "0");
-    let yearToday = today.getFullYear();
-    let minDate = `${yearToday}-${monthToday}-${dateToday}`;
-    dueDate.min = minDate;
-  });
+
+let newCard = document.getElementsByClassName('newCard');
+
+//Click events
+for (let i = 0; i < newCard.length; i++) {
+    newCard.item(i).addEventListener('click', function(){
+     formDelete.style.display = 'block'
+     modalOverlay.style.opacity = "0.3";
+     modalOverlay.style.backgroundColor = "gray";
+    });
+ }
 
 
+  for (let i = 0; i < card1.length; i++) {
+    card1.item(i).addEventListener('click', function(){
+     formDelete.style.display = 'block'
+     modalOverlay.style.opacity = "0.3";
+     modalOverlay.style.backgroundColor = "gray";
+    });
+ }
 btn.onclick = function() {
   modal.style.display = "block";
   modalOverlay.style.opacity = "0.3";
   modalOverlay.style.backgroundColor = "gray";
   
 }
-
 span.onclick = function() {
   modal.style.display = "none";
   modalOverlay.style.opacity = "1";
   modalOverlay.style.backgroundColor = "transparent";
 }
+closebtnedit.onclick = function() {
+    formDelete.style.display = "none";
+    modalOverlay.style.opacity = "1";
+    modalOverlay.style.backgroundColor = "transparent";
+  }
 mobileAddTaskBtn.onclick = function() {
     modal.style.display = "block";
     modalOverlay.style.opacity = "0.3";
@@ -67,6 +93,10 @@ mobileAddTaskBtn.onclick = function() {
    
   };
 
+ 
+let formValidated = false;
+
+//Validating the form fields
 form.addEventListener('submit', (e) => {
     let messages = []
     if(taskName.value === ''){
@@ -83,7 +113,7 @@ form.addEventListener('submit', (e) => {
         messages.push('Please set a status.')
     }
     if (dueDate.value === ""){
-        messages.push('Please set a due date!')
+        messages.push('Please set a due date')
     }
     if (description.value == ""){
         messages.push('Please write a description')
@@ -94,18 +124,25 @@ form.addEventListener('submit', (e) => {
     if (messages.length > 0){
         e.preventDefault()
         errorElement.innerText = messages.join('. ')
+    } else {
+        return formValidated = true;
     }
     
 })
 
+//Grey out past dates- making only future dates clickable
+dueDate.addEventListener("click", function () {
+    let today = new Date();
+    let dateToday = String(today.getDate()).padStart(2, "0");
+    let monthToday = String(today.getMonth() + 1).padStart(2, "0");
+    let yearToday = today.getFullYear();
+    let minDate = `${yearToday}-${monthToday}-${dateToday}`;
+    dueDate.min = minDate;
+  });
 
  //Begin Javascript for adding todo
 
-
- 
-
-
-
+ //class constructor
  class NewTask {
     constructor(newTaskName, newAssignTo, newDueDate, newSelectStatus, newAddDescription, newID) {
       this.newTaskName = newTaskName;
@@ -115,32 +152,11 @@ form.addEventListener('submit', (e) => {
       this.newAddDescription = newAddDescription;
       this.newID = Math.floor(Math.random()*10000);
     }
-    // get taskName() {
-    //     return this.newTaskName;
-    // }
-
-    // get assignTo() {
-    //     return this.newAssignTo;
-    // }
-
-    // get dueDate() {
-    //     return this.newDueDate;
-    // }
-
-    // get selectStatus() {
-    //     return this.newSelectStatus;
-    // }
-
-    // get addDescription() {
-    //     return this.newAddDescription;
-    // }
-
     incrementnewID() {
         this.newID++;
     }
   }
 
-///logic in plain english 
 
 //assigning lets
 
@@ -149,43 +165,92 @@ let toDoItems = [];
  let reviewItems = [];
  let doneItems = [];
 let modalBtn = document.getElementById('modalBtn');
-let cardsToDo = document.getElementById('cardsToDo');
 
+let cardsToDo = document.getElementById('cardsToDo');
+let cardsinProgress = document.getElementById('cardsinProgress');
+let cardsReview = document.getElementById('cardsReview');
+let cardsDone = document.getElementById('cardsDone');
 
 
 /// extract information from input fields on submit button click
-modalBtn.addEventListener('click', 
+
+form.addEventListener('submit',
     function extractData(){
-    let ourNewTask = new NewTask (`${taskName.value}`,`${assignedTo.value}`,`${dueDate.value}`,`${setStatus.value}`,`${description.value}`,`${description.value}`);
-    // toDoItems.push(ourNewTask);
-    // console.log(toDoItems);
+
+    let ourNewTask = new NewTask (`${taskName.value}`,`${assignedTo.value}`,`${dueDate.value}`,
+        `${setStatus.value}`,`${description.value}`,`${description.value}`);
+
     if (setStatus.value === "modalToDo") {
         toDoItems.push(ourNewTask);
+
+        let card = `<div class=newCard><span><img src="./Resources/redbox.png" alt=""></span>
+            <h3> ${taskName.value} </h3> 
+            <p class="taskDescriptionText"> ${description.value} </p>
+            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
+            <hr> 
+            <p class="dueDateText"><strong>DUE:</strong><span>${dueDate.value}</span></p></div>`
+
+        function addNewCardDivToDo() {
+            const newDiv = document.createElement("div");
+            cardsToDo.insertAdjacentElement('beforeend', newDiv);
+            newDiv.classList.add("card1");
+            newDiv.innerHTML = card;
+        };
+         addNewCardDivToDo();
+         
     } if (setStatus.value === "modalInProgress") {
         inProgressItems.push(ourNewTask);
-    }if (setStatus.value === "modalReview") {
+
+        let card = `<span><img src="./Resources/yellowbox.png" alt=""></span>
+            <h3> ${taskName.value} </h3> 
+            <p class="taskDescriptionText"> ${description.value} </p>
+            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
+            <hr> 
+            <p class="dueDateText"><strong>DUE:</strong><span>${dueDate.value}</span></p>`
+
+        function addNewCardDivInProgress() {
+            const newDiv = document.createElement("div");
+            cardsinProgress.insertAdjacentElement('beforeend', newDiv);
+            newDiv.classList.add("card1");
+            newDiv.innerHTML = card;
+        };
+        addNewCardDivInProgress();
+
+    } if (setStatus.value === "modalReview") {
         reviewItems.push(ourNewTask);
+
+        let card = `<span><img src="./Resources/bluebox.png" alt=""></span>
+            <h3> ${taskName.value} </h3> 
+            <p class="taskDescriptionText"> ${description.value} </p>
+            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
+            <hr> 
+            <p class="dueDateText"><strong>DUE:</strong><span>${dueDate.value}</span></p>`
+
+        function addNewCardDivCardsReviews() {
+            const newDiv = document.createElement("div");
+            cardsReview.insertAdjacentElement('beforeend', newDiv);
+            newDiv.classList.add("card1");
+            newDiv.innerHTML = card;
+        };
+        addNewCardDivCardsReviews();
+
     } if (setStatus.value === "modalDone") {
         doneItems.push(ourNewTask);
+
+        let card = `<span><img src="./Resources/greenbox.png" alt=""></span>
+            <h3> ${taskName.value} </h3> 
+            <p class="taskDescriptionText"> ${description.value} </p>
+            <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
+            <hr> 
+            <p class="dueDateText"><strong>DUE:</strong><span>${dueDate.value}</span></p>`
+
+        function addNewCardDivcardsDone() {
+            const newDiv = document.createElement("div");
+            cardsDone.insertAdjacentElement('beforeend', newDiv);
+            newDiv.classList.add("card1");
+            newDiv.innerHTML = card;
+        };
+        addNewCardDivcardsDone();
     }
 
-
-    card = `<span><img src="./Resources/redbox.png" alt=""></span>
-    <h3> ${taskName.value} </h3> 
-    <p class="taskDescriptionText"> ${description.value} </p>
-    <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
-    <hr> 
-    <p class="dueDateText"><strong>DUE:</strong><span>${dueDate.value}</span></p>`
-
-
-    function addNewCardDiv() {
-        const newDiv = document.createElement("div");
-        cardsToDo.insertAdjacentElement('beforeend', newDiv);
-        newDiv.classList.add("card1");
-        newDiv.innerHTML = card;
-    };
-console.log(card);
-    addNewCardDiv();
-    
-    
 })
