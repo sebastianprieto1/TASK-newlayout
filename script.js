@@ -99,70 +99,93 @@ form.addEventListener('submit', (e) => {
 })
 
 
-
-
  //Begin Javascript for adding todo
 
 
- let toDoItems = [];
-
-//  function addToDo() {
-//     const newToDo = {
-//         taskName: taskName,
-//         assignTo: assignTo,
-//         dueDate: dueDate,
-//         selectStatus: selectStatus,
-//         addDescription: addDescription,
-//     };
-//     toDoItems.push(newToDo);
-//     console.log(toDoItems)
-//  };
+ 
 
 
-//  class NewTask {
-//     constructor(taskName, assignTo, dueDate, selectStatus, addDescription, ID) {
-//       this.taskName = taskName;
-//       this.assignTo = assignTo;
-//       this.dueDate = dueDate;
-//       this.selectStatus = selectStatus;
-//       this.addDescription = addDescription;
-//       this.ID = Math.floor(Math.random()*10000);
-//     }
-//     get taskName() {
-//         return this.taskName;
-//     }
 
-//     get assignTo() {
-//         return this.assignTo;
-//     }
+ class NewTask {
+    constructor(newTaskName, newAssignTo, newDueDate, newSelectStatus, newAddDescription, newID) {
+      this.newTaskName = newTaskName;
+      this.newAssignTo = newAssignTo;
+      this.newDueDate = newDueDate;
+      this.newSelectStatus = newSelectStatus;
+      this.newAddDescription = newAddDescription;
+      this.newID = Math.floor(Math.random()*10000);
+    }
+    // get taskName() {
+    //     return this.newTaskName;
+    // }
 
-//     get dueDate() {
-//         return this.dueDate;
-//     }
+    // get assignTo() {
+    //     return this.newAssignTo;
+    // }
 
-//     get selectStatus() {
-//         return this.selectStatus;
-//     }
+    // get dueDate() {
+    //     return this.newDueDate;
+    // }
 
-//     get addDescription() {
-//         return this.addDescription;
-//     }
+    // get selectStatus() {
+    //     return this.newSelectStatus;
+    // }
 
-//     incrementID() {
-//         this.ID++;
-//     }
-//   }
+    // get addDescription() {
+    //     return this.newAddDescription;
+    // }
+
+    incrementnewID() {
+        this.newID++;
+    }
+  }
+
+///logic in plain english 
+
+//assigning lets
+
+let toDoItems = [];
+ let inProgressItems = [];
+ let reviewItems = [];
+ let doneItems = [];
+let modalBtn = document.getElementById('modalBtn');
+let cardsToDo = document.getElementById('cardsToDo');
 
 
-//   taskName = document.getElementById('modalTaskName').value
-//   assignTo =document.getElementById('modalAssignTo').value
-//   dueDate = document.getElementById('modalDueDate').value
-//   selectStatus = document.getElementById('modalSelectStatus').value
-//   addDescription = document.getElementById('modalAddDescription').value
-//   ID = incrementID();
 
-  
-//   function addNewTask() {
-//     const adddNew = new NewTask('taskName, assignTo, dueDate, selectStatus, addDescription, ID');
-//   }
+/// extract information from input fields on submit button click
+modalBtn.addEventListener('click', 
+    function extractData(){
+    let ourNewTask = new NewTask (`${taskName.value}`,`${assignedTo.value}`,`${dueDate.value}`,`${setStatus.value}`,`${description.value}`,`${description.value}`);
+    // toDoItems.push(ourNewTask);
+    // console.log(toDoItems);
+    if (setStatus.value === "modalToDo") {
+        toDoItems.push(ourNewTask);
+    } if (setStatus.value === "modalInProgress") {
+        inProgressItems.push(ourNewTask);
+    }if (setStatus.value === "modalReview") {
+        reviewItems.push(ourNewTask);
+    } if (setStatus.value === "modalDone") {
+        doneItems.push(ourNewTask);
+    }
 
+
+    card = `<span><img src="./Resources/redbox.png" alt=""></span>
+    <h3> ${taskName.value} </h3> 
+    <p class="taskDescriptionText"> ${description.value} </p>
+    <img class= "profileCard" src="./Resources/ProfileUser1.png"> 
+    <hr> 
+    <p class="dueDateText"><strong>DUE:</strong><span>${dueDate.value}</span></p>`
+
+
+    function addNewCardDiv() {
+        const newDiv = document.createElement("div");
+        cardsToDo.insertAdjacentElement('beforeend', newDiv);
+        newDiv.classList.add("card1");
+        newDiv.innerHTML = card;
+    };
+console.log(card);
+    addNewCardDiv();
+    
+    
+})
