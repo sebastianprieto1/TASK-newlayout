@@ -214,7 +214,7 @@ form.addEventListener("submit", function extractData() {
       const newDiv = document.createElement("div");
       cardsToDo.insertAdjacentElement("beforeend", newDiv);
       newDiv.classList.add("card1");
-      newDiv.addEventListener('click', ()=>{editTask()})
+      newDiv.addEventListener('click', ()=>{editTask(),window.scrollTo(0, 0)})
       newDiv.innerHTML = card;
     }
     addNewCardDivToDo();
@@ -234,7 +234,7 @@ form.addEventListener("submit", function extractData() {
       const newDiv = document.createElement("div");
       cardsinProgress.insertAdjacentElement("beforeend", newDiv);
       newDiv.classList.add("card1");
-      newDiv.addEventListener('click', ()=>{editTask()})
+      newDiv.addEventListener('click', ()=>{editTask(),window.scrollTo(0, 0);})
       newDiv.innerHTML = card;
     }
     addNewCardDivInProgress();
@@ -254,7 +254,7 @@ form.addEventListener("submit", function extractData() {
       const newDiv = document.createElement("div");
       cardsReview.insertAdjacentElement("beforeend", newDiv);
       newDiv.classList.add("card1");
-      newDiv.addEventListener('click', ()=>{editTask()})
+      newDiv.addEventListener('click', ()=>{editTask(),window.scrollTo(0, 0)})
       newDiv.innerHTML = card;
     }
     addNewCardDivCardsReviews();
@@ -274,7 +274,7 @@ form.addEventListener("submit", function extractData() {
       const newDiv = document.createElement("div");
       cardsDone.insertAdjacentElement("beforeend", newDiv);
       newDiv.classList.add("card1");
-      newDiv.addEventListener('click', ()=>{editTask()})
+      newDiv.addEventListener('click', ()=>{editTask(),window.scrollTo(0, 0)})
       newDiv.innerHTML = card;
     }
     addNewCardDivcardsDone();
