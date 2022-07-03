@@ -82,6 +82,10 @@
     font-weight: bold;
 }
 
+.addTaskBtn button:hover {
+    cursor: pointer;
+}
+
   .cards {
     display: grid;
     grid-template-areas: "toDo inProgress Review Done";
@@ -167,6 +171,7 @@
 
 
 
+
 /* Modal CSS */
 
 #modalOverlay {
@@ -214,8 +219,12 @@ textarea{
   margin-right: 15px;
 }
 
+#modalBtnDel:hover {
+  cursor: pointer;
+}
 
-#modalEditBtnSubmit{
+
+#modalEditBtnSubmit {
   float: right;
   background-color: #4f82c4;
   height: 100%;
@@ -224,6 +233,10 @@ textarea{
   border-radius: 10%;
   font-weight: bold;
   margin-top: 20px;
+}
+
+#modalEditBtnSubmit:hover {
+  cursor: pointer;
 }
 
 #modalBtn {
@@ -235,6 +248,10 @@ textarea{
   border-radius: 10%;
   font-weight: bold;
   margin-top: 20px;
+}
+
+#modalBtn:hover {
+  cursor: pointer;
 }
 
 
